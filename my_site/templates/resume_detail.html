@@ -1,0 +1,50 @@
+{% extends "base.html"%}
+
+
+{% block content %}
+
+<style>
+    body {
+        background-color: #c3ddf1;
+    }
+    h1 {
+      color: black;
+      text-align: center;
+    }
+
+    del {
+        width: 40%;
+        max-width: 560px;
+        margin: 15px auto;
+    }
+</style>
+
+<div class="d-flex flex-column flex-md-row align-items-center pb-3 mb-4 border-bottom">
+    <a href="/" class="d-flex align-items-center text-dark text-decoration-none"></a>
+    <nav class="d-inline-flex mt-2 mt-md-0 ms-md-auto">
+    <a class="me-3 py-2 text-dark text-decoration-none" href="#"></a>
+    <a class="py-2 text-dark text-decoration-none" href="#"></a>
+    </nav>
+</div>
+<h1></h1><br>
+<h1></h1><br>
+<h1>{{ resume.first_name }} {{ resume.last_name }}</h1>
+<h3>{{ resume.text }}</h3>
+<a href="{% url 'index' %}" class="btn btn-primary"> Вернуться назад </a>
+<del class="container mt-4">
+<div class='form-signin' action="#" method="post">
+{% csrf_token %}
+<div class="btn btn-primary">
+    <input class="form-label-group"  type="text" placeholder=' Фамилия Удаляемого ' aria-label='Фамилия' name='data_'>
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit" value='delete'>Удалить</button>
+    
+</div>
+</div>
+</del>
+</form>
+{% endblock %}
+
+
+    
+    
+  

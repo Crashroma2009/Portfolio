@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+<style>
+    .top {
+        margin-left: 100px;
+        margin-top: 350;
+        }
+</style>
+<br>
+<br>
+<br>
+<br>
+<br>
+<div class="container text-center">
+    <div class="div1">
+    <div class="row">
+    <div class="col-sm-6">
+<div class="top"> 
+<div class='left'>
+    <div class="card">
+        <p class="ridge">
+        {% if resume_all_user %} 
+        {% for resume in resume_all_user %} 
+            <h3 class="card-title">{{ resume.last_name }} {{ resume.first_name }} {{ resume.field_of_activity }}</h3>
+        </p>
+            {% if resume.photo %}
+                <p><img  src="{{resume.photo.url}}" width="160" height="50"></p>
+            {% endif %}
+            <button class='submit_buttons_top'><a href="#" class="btn">Изменить свое резюме</a></button>
+        {% endfor %}
+        {% else %}
+        <h3>Резюме не найдено</h3>
+        {% endif %}
+    </div>  
+</div>
+</div> 
+{% for resume in resume_all_user %}
+   
+    
+    
+{% endfor %}
+    
+{% endblock %}

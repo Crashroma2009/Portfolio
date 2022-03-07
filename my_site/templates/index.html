@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<head>
+    
+<style>
+    .top{
+        margin-top: 125px;
+        text-align: center;
+    }
+    table, th, td {
+    border: 1px solid black;
+    border-radius: 10px;
+    border-style: 6px double #9799a7;
+    border-collapse: collapse;
+    }
+    
+    .p3 {
+    font-family:  monospace;
+    }
+    .div1 {
+    margin-right: 165px;
+    margin-left: 215px;
+    }
+</style>
+</head>
+
+
+<body>
+<div class='top'><h2 style="font-family: Copperplate" >ПОИСК СОТРУДНИКОВ</h2></div>
+
+<div class="container text-center">
+    <div class="div1">
+    <div class="row">
+    <div class="col-sm-12">
+    <table style="width:100%">
+        {% for resum in resume %}
+    <tr>
+        <div class='div1'>
+        <th><p class="p3">{{ resum.last_name }} {{ resum.first_name }}</p>
+        <div class="p3">"{{ resum.field_of_activity }}"</div></th>
+    
+        {% if resum.photo %}
+        <th><img  src="{{resum.photo.url}}" class="img-responsive" style="width:80%" alt="Image"></th>
+        {% else %}
+        <p class="p3">Нет фото</p>
+        </div>
+    </tr>    
+    
+        {% endif %}
+            
+            <td><a href="{% url 'resume_detail' resum.pk %}" class="btn button">Подробнее о резюме</a></td>       
+            {% endfor %}
+        </div>
+        </tr>
+        
+        </table>
+        </div>
+    </div>
+</div>
+</div>
+</body>
+{% endblock %}

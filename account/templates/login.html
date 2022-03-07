@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+<link rel="stylesheet" Type="text/css" href="http://www.example.com/basic.css">
+
+{% block title %}Вход{% endblock %}
+body { 
+    margin-top:20px;
+}
+{% block content %}
+
+<p style="margin: 120px;"></p>
+    <h1>Вход пользователя</h1>
+    <p>Пожалуйста, заполните форму входа</p>
+        
+    <form action="{% url 'login' %}" method="post">
+        {% csrf_token %}
+        <div class="form-error">{{ form.non_field_errors }}</div>
+        {% for f in form %}
+        <p><label class="form-label" for="{{ f.id_for_label }}">{{ f.label }}:</label>{{ f }}</p>    
+        <div class="form-error">{{ f.errors }}</div>
+        {% endfor %}    
+        <p><input type="submit" value="Войти"></p>
+    </form>
+    {{ request.user }}
+</p>
+{% endblock %}

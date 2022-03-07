@@ -1,0 +1,10 @@
+settings.py
+__pycache__
+.migration
+.vscode
+env
+*.bat
+*.csv
+*.txt
+*.json
+.coverage

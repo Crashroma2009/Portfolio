@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+
+{% block content %}
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+
+<style>
+.top {
+    margin-top: 125px;
+}
+
+h2 {
+    font-family: verdana;
+    font-size: 30px;
+    text-align: center;
+}
+
+.field {
+    display: block;
+    margin-left: 150px;
+    width: 70px;
+    height: 15px;
+}
+.field1 {
+   display: block;
+    margin-left: 150px;
+    width: 150px;
+    height: 150px; 
+}
+
+</style>
+<div class="text-center mb-4">
+<div class="top">
+
+    <h2>Добавление нового резюме</h2>
+</div>
+<form class='was-walidated' action="{% url 'about' %}" method="post" enctype=multipart/form-data>
+    {% csrf_token %}
+    
+        <div class="form-group">{{ resume_form.as_p }}</div><br>
+        <button type="submit">Добавить</button>
+    
+    {% if request.method == 'POST' %}
+    <h2>{{ congratulations }}</h2>
+    {% else %}
+    <h4>Нет данных для сохранения в базу данных</h4>
+    {% endif %}
+
+</form>
+ 
+</div>
+<br></br><br>
+{% endblock %} 

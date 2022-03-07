@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+<style>
+.button {
+    display: inline-block;
+    border-radius: 4px;
+    background-color: #f4511e;
+    border: none;
+    color: #bdc018;
+    text-align: center;
+    font-size: 58px;
+    padding: 20px;
+    width: 200px;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 10px;
+  }
+  
+  .button span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+  }
+  
+  .button span:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -50px;
+    transition: 0.5s;
+  }
+  
+  .button:hover span {
+    padding-right: 5px;
+  }
+  
+  .button:hover span:after {
+    opacity: 1;
+    right: 0;
+  }
+</style>
+
+{% block title %}Вход{% endblock %}
+
+<link rel="stylesheet" Type="text/css" href="http://www.example.com/basic.css">
+</style>
+{% block content %}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+
+<p style="margin: 120px;">
+    
+  <div class="card" style='width: 500px;'>
+    <div class="card-body">
+      <h2>Личный кабинет</h2>
+      <br>
+      <h3 align="center">Добро пожаловать <p style="font-family: Copperplate">{{ user.username }}</p></h3>
+      <br>
+      {% if user.photo %}
+        <img class="mx-auto d-block" style="width:50%" src="{{user.photo.url}}"><br>
+      {% else %}
+        <p>Фото отсутствует</p>
+      {% endif %}
+      <h3 style="font-family: Copperplate;">{{ user.first_name }}  {{ user.last_name }} <br> из города {{ user.sity }}</h3>
+      <p>Если в данном поле нет вашего имени и фамилии, вы можете его заполнить в форме ниже.</p>
+      <a href="{% url 'edit_resume' %}"><button class="button" style="vertical-align:middle"><span>Коррекция профиля</span></button>
+      <a href="{% url 'my_resume' %}"><button class="button" style="vertical-align:middle"><span>Мои резюме</span></button>
+    </div>
+    </div>
+</p>
+
+
+
+{% endblock %}
