@@ -24,38 +24,30 @@
     }
 </style>
 </head>
-
-
 <body>
 <div class='top'><h2 style="font-family: Copperplate" >ПОИСК СОТРУДНИКОВ</h2></div>
-
 <div class="container text-center">
     <div class="div1">
     <div class="row">
     <div class="col-sm-12">
     <table style="width:100%">
-        {% for resum in resume %}
+        {% for resume in resume_all %}
     <tr>
         <div class='div1'>
-        <th><p class="p3">{{ resum.last_name }} {{ resum.first_name }}</p>
-        <div class="p3">"{{ resum.field_of_activity }}"</div></th>
-    
-        {% if resum.photo %}
-        <th><img  src="{{resum.photo.url}}" class="img-responsive" style="width:80%" alt="Image"></th>
+        <th><p class="p3">{{ resume.last_name }} {{ resume.first_name }}</p>
+        <div class="p3">"{{ resume.field_of_activity }}"</div></th>
+        {% if resume.photo %}
+        <th><img  src="{{resume.photo.url}}" class="img-responsive" style="width:80%" alt="Image"></th>
         {% else %}
         <p class="p3">Нет фото</p>
         </div>
     </tr>    
-    
         {% endif %}
-            
-            <td><a href="{% url 'resume_detail' resum.pk %}" class="btn button">Подробнее о резюме</a></td>       
-            {% endfor %}
-        </div>
-        </tr>
-        
-        </table>
-        </div>
+            <td><a href="{% url 'resume_detail' resume.pk %}" class="btn button">Подробнее о резюме</a></td>       
+        {% endfor %}
+    </table>
+    </div>
+    </div>
     </div>
 </div>
 </div>

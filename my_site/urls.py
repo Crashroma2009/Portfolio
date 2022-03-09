@@ -7,7 +7,7 @@ from my_site import views
 
 urlpatterns = [
     path('', views.index, name='index'),
-    path('about/', views.about, name='about'),
+    path('create_resume/', views.create_resume, name='create_resume'),
     path('resume_detail/<int:pk>/', views.resume_detail, name='resume_detail'),
     path('user_contacts/<int:pk>/', views.user_contacts, name='user_contacts'),
     path('search/', views.search, name='search'),
@@ -17,3 +17,4 @@ urlpatterns = [
     # path('login/', views.login, name='login'),
     # path('account_user/', views.account_user, name='account_user'),
 ]
+

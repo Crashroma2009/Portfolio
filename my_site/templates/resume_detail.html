@@ -1,8 +1,6 @@
 {% extends "base.html"%}
 
-
 {% block content %}
-
 <style>
     body {
         background-color: #c3ddf1;
@@ -11,7 +9,6 @@
       color: black;
       text-align: center;
     }
-
     del {
         width: 40%;
         max-width: 560px;
@@ -28,17 +25,19 @@
 </div>
 <h1></h1><br>
 <h1></h1><br>
+<style>
+    h1, h3 {
+        margin-left: 100px;
+        margin-right: 100px;
+    }
+</style>
 <h1>{{ resume.first_name }} {{ resume.last_name }}</h1>
 <h3>{{ resume.text }}</h3>
+</div>
 <a href="{% url 'index' %}" class="btn btn-primary"> Вернуться назад </a>
 <del class="container mt-4">
 <div class='form-signin' action="#" method="post">
 {% csrf_token %}
-<div class="btn btn-primary">
-    <input class="form-label-group"  type="text" placeholder=' Фамилия Удаляемого ' aria-label='Фамилия' name='data_'>
-    <button class="btn btn-outline-success my-2 my-sm-0" type="submit" value='delete'>Удалить</button>
-    
-</div>
 </div>
 </del>
 </form>

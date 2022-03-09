@@ -1,12 +1,6 @@
-from my_site.models import Resume
+from tkinter import N
+from django.http import HttpResponseNotFound
 
 
-def Years(age):
-    data_age = Resume.objects.all()
-    
-    if str(data_age.age)[-1] == 1:
-        return 'год'
-    elif str(data_age.age)[-1] == range(2, 5):
-        return 'года'
-    else:
-        return 'лет'
+def pageNotFound(request, exception):
+    return HttpResponseNotFound(f'<h1>Страница не найдена</h1>\n Нажмите сюда ==> <a href="http://127.0.0.1:8000/">Главная страница</a> \n С уважением, администрация сайта ;)')
