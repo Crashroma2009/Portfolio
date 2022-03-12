@@ -39,16 +39,13 @@ h2 {
 </div>
 <form class='was-walidated' action="{% url 'create_resume' %}" method="post" enctype=multipart/form-data>
     {% csrf_token %}
-    
         <div class="form-group">{{ resume_form.as_p }}</div><br>
-        <button type="submit">Добавить</button>
-    
+        <button type="submit">Добавить</button>   
     {% if request.method == 'POST' %}
-    <h2>{{ congratulations }}</h2>
+    <h2>Ваша запись успешно сохранена</h2>
     {% else %}
     <h4>Нет данных для сохранения в базу данных</h4>
     {% endif %}
-
 </form>
  
 </div>
