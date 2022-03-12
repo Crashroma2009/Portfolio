@@ -42,7 +42,6 @@ def create_resume(request):
 
 
 def resume_detail(request, pk):
-    print(request)
     try:
         resume = Resume.objects.get(id=pk)
         resume_all = Resume.objects.all()
@@ -75,16 +74,12 @@ def search(request):
     model = Resume
     resume = Resume.objects.all()
     try:
-        post_data = request.POST['data_']
+        post_data = request.POST['data_search']
         a = model.objects.filter(last_name=post_data)
-        for i in resume:
-            print(i.last_name)
-
         context = {
             'resume': resume,
             'post_data': post_data,
         }
-        print(post_data)
     except EmptyResultSet as e:
         print(e, 'Нет результатов')
     return render(request, 'search.html', context)
