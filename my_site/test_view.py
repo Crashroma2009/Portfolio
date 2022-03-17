@@ -1,14 +1,14 @@
 #from django.test import TestCase
+from django.core.files.uploadedfile import SimpleUploadedFile
+from django.http import HttpResponse
+from django.test import Client, TestCase
 from my_site.views import index
 from .models import Users
-from django.core.files.uploadedfile import SimpleUploadedFile
-
-from django.test import TestCase
 import unittest
-import pytest
+#import pytest
 from urllib import response
-from django.test import Client
-from django.http import HttpResponse
+
+
 # Create your tests here.
 
 """Проверка статуса ответа страниц"""
@@ -38,7 +38,7 @@ class StatusCodeTest(unittest.TestCase):
 
 
     # def test_about(self):
-    #     '''Нужно авторизаваться сначалаы'''
+    #     '''Нужно авторизаваться сначала'''
     #     response = self.client.get('//127.0.0.1:8000/about')
     #     self.assertEqual(response.status_code, 200, 'Не был полуен ответ от сайта')
 

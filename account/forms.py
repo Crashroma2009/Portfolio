@@ -37,7 +37,6 @@ class UserRegistrationForm(UserCreationForm):
 class Edit_Forms(forms.Form):
     first_name = forms.CharField(label='Имя', widget=forms.TextInput(attrs={'class': 'form-input'}))
     last_name = forms.CharField(label='Фамилия', widget=forms.TextInput(attrs={'class': 'form-input'}))
-    #email = forms.EmailField(label='Email', widget=forms.EmailInput(attrs={'class', 'form-input'}))
     sity = forms.CharField(label='Город проживания', widget=forms.TextInput(attrs={'class': 'form-input'}))
     photo = forms.ImageField(required = False)
 
