@@ -8,3 +8,5 @@ env
 *.txt
 *.json
 .coverage
+media
+my_site.static
