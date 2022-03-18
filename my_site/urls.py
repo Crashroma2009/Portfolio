@@ -6,7 +6,7 @@ from my_site import views
 
 
 urlpatterns = [
-    path('', views.index, name='index'),
+    path('', views.IndexHome.as_view(), name='index'),
     path('create_resume/', views.create_resume, name='create_resume'),
     path('resume_detail/<int:pk>/', views.resume_detail, name='resume_detail'),
     path('user_contacts/<int:pk>/', views.user_contacts, name='user_contacts'),

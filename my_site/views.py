@@ -1,21 +1,25 @@
-from cmath import exp
 from django.http import HttpResponse
 from django.core.exceptions import EmptyResultSet, ObjectDoesNotExist, ValidationError
 from django.shortcuts import render, redirect
 from django.views.generic import ListView
-from .models import Resume, Users
+from .models import Resume
 from my_site.forms import *
-from time import sleep
 
-def index(request):
-    resume_form = Resume_form
-    resume_all = Resume.objects.all()
-    context = {
-        'resume_all': resume_all,
-        'resume_form': resume_form,
-    }
-    print(HttpResponse.status_code)   #Доп.информация для разработчика
-    return render(request, 'index.html', context)
+
+class IndexHome(ListView):
+    model = Resume
+    template_name = 'index.html'
+    context_object_name = 'resume_all'
+
+# def index(request):
+#     resume_form = Resume_form
+#     resume_all = Resume.objects.all()
+#     context = {
+#         'resume_all': resume_all,
+#         'resume_form': resume_form,
+#     }
+#     print(HttpResponse.status_code)   #Доп.информация для разработчика
+#     return render(request, 'index.html', context)
    
 
 def create_resume(request):
