@@ -62,6 +62,7 @@ class Register(CreateView):
     form_class = UserRegistrationForm
     template_name = 'register.html'
     
+    
     def get_success_url(self):
         return  reverse_lazy('login')
     
@@ -71,19 +72,13 @@ def user_home(request):    #Фун-я . Личный кабинет
 
 
 def edit_resume(request):     #Редактирование или добавление информации в аккаунт пользователя
-    #user = Users
     data = request.POST
-    #print(data)
     edit_form = Edit_Forms(request.POST, request.FILES)
     a = request.FILES
-    print(a)
     pk = request.user.id
-    print(pk)
     user = Users.objects.get(id=pk)
-    #print(user.email)
 
     if request.method == 'POST':
-        #data_photo = MEDIA_URL +  str(request.FILES['photo'])
         Users.objects.filter(id=pk).update(first_name=data['first_name'], last_name=data['last_name'], sity=data['sity'])
         photo = Users.objects.get(id=pk)
         photo.photo = request.FILES['photo'] 
@@ -104,9 +99,6 @@ def edit_resume(request):     #Редактирование или добавл�
 def my_resume(request):
     pk = request.user.id
     resume_all_user = Resume.objects.filter(user_resume=pk)
-    print(type(resume_all_user))
-    for resume in resume_all_user:
-        print(resume.last_name)
 
     context = {
         'resume_all_user': resume_all_user,
