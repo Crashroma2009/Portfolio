@@ -1,17 +1,12 @@
-from my_site.forms import Resume_form
-from personal_portfolio.settings import *
-from django.http import HttpResponse
-from django.shortcuts import render, redirect
-from django.urls import reverse_lazy
 from django.contrib.auth import authenticate, login, logout
-from django.contrib.auth.views import LoginView
-from django.views.generic.edit import CreateView
-#from django.contrib.auth.forms import AuthenticationForm
-from .forms import LoginForm
-from .forms import UserRegistrationForm, Edit_Forms
-from my_site.models import Users, Resume
-from django.views.generic import TemplateView
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.views import LoginView
+from django.shortcuts import render, redirect
+from django.views.generic.edit import CreateView
+from django.urls import reverse_lazy
+from .forms import  Edit_Forms, LoginForm, UserRegistrationForm
+from my_site.models import Users, Resume
+from personal_portfolio.settings import *
 
 # def user_login(request):
 #     if request.method == 'POST':
@@ -91,7 +86,6 @@ def edit_resume(request):     #Редактирование или добавл�
         'form': edit_form,
         'user': user,
     }
-    
     return render(request, 'edit_resume.html', context)
 
     
@@ -103,5 +97,4 @@ def my_resume(request):
     context = {
         'resume_all_user': resume_all_user,
     }
-
     return render(request, 'my_resume.html', context)

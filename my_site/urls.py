@@ -1,8 +1,5 @@
 from django.urls import path
 from my_site import views
-#from django.conf.urls import patterns, include, url
-#from django.views.generic import TemplateView
-
 
 
 urlpatterns = [
@@ -13,8 +10,4 @@ urlpatterns = [
     path('search/', views.search, name='search'),
     # path('delete_of_resume/', views.delete_of_resume, name='delete_of_resume'),
     path('additional_information/', views.additional_information, name='additional_information'),
-    # path('register/', views.register, name='register'),
-    # path('login/', views.login, name='login'),
-    # path('account_user/', views.account_user, name='account_user'),
 ]
-

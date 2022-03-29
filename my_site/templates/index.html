@@ -37,7 +37,7 @@
         <th><p class="p3">{{ resume.last_name }} {{ resume.first_name }}</p>
         <div class="p3">"{{ resume.field_of_activity }}"</div></th>
     {% if resume.photo %}
-        <th><img  src="{{resume.photo.url}}" class="img-responsive" style="width:80%" alt="Image"></th>
+        <th><img src="{{ resume.photo.url }}" class="img-responsive" style="width:80%" alt="Image"></th>
     {% else %}
         <p class="p3">Нет фото</p>
         </div>
