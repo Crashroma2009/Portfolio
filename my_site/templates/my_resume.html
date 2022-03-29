@@ -27,8 +27,9 @@
             <h3 class="card-title">{{ resume.last_name }} {{ resume.first_name }} {{ resume.field_of_activity }}</h3>
         </p>
             {% if resume.photo %}
-                <p><img  src="{{resume.photo.url}}" width="160" height="50"></p>
+        <center><img  src="{{resume.photo.url}}" width="180" height="80"></center>
             {% endif %}
+        <br>
             <button class='submit_buttons_top'><a href="#" class="btn">Изменить свое резюме</a></button>
         {% endfor %}
         {% else %}
@@ -36,11 +37,4 @@
         {% endif %}
     </div>  
 </div>
-</div> 
-{% for resume in resume_all_user %}
-   
-    
-    
-{% endfor %}
-    
-{% endblock %}
+</div>
