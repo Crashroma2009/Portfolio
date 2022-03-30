@@ -62,17 +62,20 @@ class Register(CreateView):
         return  reverse_lazy('login')
     
 
+@login_required
 def user_home(request):    #Фун-я . Личный кабинет
+    raise_exception = True
     return render(request, 'user_home.html')
 
 
+@login_required
 def edit_resume(request):     #Редактирование или добавление информации в аккаунт пользователя
     data = request.POST
     edit_form = Edit_Forms(request.POST, request.FILES)
     a = request.FILES
     pk = request.user.id
     user = Users.objects.get(id=pk)
-
+    raise_exception = True
     if request.method == 'POST':
         Users.objects.filter(id=pk).update(first_name=data['first_name'], last_name=data['last_name'], sity=data['sity'])
         photo = Users.objects.get(id=pk)
@@ -89,7 +92,8 @@ def edit_resume(request):     #Редактирование или добавл�
     return render(request, 'edit_resume.html', context)
 
     
-    #отображение страницы резюме пользователя
+#отображение страницы резюме пользователя
+@login_required
 def my_resume(request):
     pk = request.user.id
     resume_all_user = Resume.objects.filter(user_resume=pk)
@@ -97,4 +101,5 @@ def my_resume(request):
     context = {
         'resume_all_user': resume_all_user,
     }
+    raise_exception = True
     return render(request, 'my_resume.html', context)

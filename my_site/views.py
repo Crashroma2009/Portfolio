@@ -4,6 +4,8 @@ from django.shortcuts import render, redirect
 from django.views.generic import ListView
 from .models import Resume
 from my_site.forms import *
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.decorators import login_required
 
 
 class IndexHome(ListView):
@@ -21,12 +23,13 @@ class IndexHome(ListView):
 #     print(HttpResponse.status_code)   #Доп.информация для разработчика
 #     return render(request, 'index.html', context)
    
-
+@login_required
 def create_resume(request):
     """Создание нового резюме пользователя"""
     user_id = request.user.id   #id текущего пользователя
     resume_form = Resume_form(request.POST, request.FILES)
     resume_data = Resume.objects.all()
+    raise_exception = True
     try:
         if request.method == 'POST':
             if resume_form.is_valid():   #Если пришли правильны данные,
