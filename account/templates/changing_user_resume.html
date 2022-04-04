@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+<style>
+   div_top {
+        padding: 5px; /* Поля вокруг текста */
+        margin-top: 40px; /* Отступ сверху */
+    }
+ </style>
+        <form class='form-signin' action=" " method="post" enctype="multipart/form-data">
+        <div class="form-error">{{ form.non_field_errors }}</div>
+        {% csrf_token %}
+        <div_top>
+            <br>
+            <br>
+            <br>
+            <br>
+            <h2>Изменение резюме</h2>
+            <br>
+            {% for f in form %}
+            <p><label class="form-label" for="{{ f.id_for_label }}">{{ f.label }}:</label>{{ f }}</p>
+            <div class="form-error">{{ f.errors }}</div>
+            {% endfor %}
+            <button class="submit">Обновить</button>
+        </div_top>
+        </form>
+{% endblock %}

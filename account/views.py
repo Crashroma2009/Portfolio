@@ -2,9 +2,11 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.views import LoginView
 from django.shortcuts import render, redirect
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView, FormView, UpdateView
+from django.views.generic import ListView
 from django.urls import reverse_lazy
 from .forms import  Edit_Forms, LoginForm, UserRegistrationForm
+from my_site.forms import Resume_form
 from my_site.models import Users, Resume
 from personal_portfolio.settings import *
 
@@ -103,3 +105,10 @@ def my_resume(request):
     }
     raise_exception = True
     return render(request, 'my_resume.html', context)
+
+
+class Changing_User_Resume(UpdateView):
+    model = Resume
+    form_class = Resume_form
+    template_name = 'changing_user_resume.html'
+    success_url = reverse_lazy('my_resume')

@@ -2,7 +2,7 @@
 from django.core.files.uploadedfile import SimpleUploadedFile
 from django.http import HttpResponse
 from django.test import Client, TestCase
-from my_site.views import index
+from my_site.views import IndexHome
 from .models import Users
 import unittest
 #import pytest

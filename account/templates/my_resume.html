@@ -30,7 +30,7 @@
         <center><img  src="{{resume.photo.url}}" width="180" height="80"></center>
             {% endif %}
         <br>
-            <button class='submit_buttons_top'><a href="#" class="btn">Изменить свое резюме</a></button>
+            <button class='submit_buttons_top'><a href='{% url "Changing_User_Resume" resume.pk %}' class="btn">Изменить свое резюме</a></button>
         {% endfor %}
         {% else %}
         <h3>Резюме не найдено</h3>
