@@ -1,6 +1,6 @@
 from django.urls import path
 from my_site import views
-
+from my_site.views import ResumeAPIList, ResumeAPIUpdate, ResumeAPIDetailView
 
 urlpatterns = [
     path('', views.IndexHome.as_view(), name='index'),
@@ -10,4 +10,7 @@ urlpatterns = [
     path('search/', views.search, name='search'),
     # path('delete_of_resume/', views.delete_of_resume, name='delete_of_resume'),
     path('additional_information/', views.additional_information, name='additional_information'),
+    path('api/v1/resumelist/', ResumeAPIList.as_view()),
+    path('api/v1/resumelist/<int:pk>/', ResumeAPIUpdate.as_view()),
+    path('api/v1/resumedetail/<int:pk>/', ResumeAPIDetailView.as_view()),
 ]

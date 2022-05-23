@@ -42,7 +42,7 @@ class Contacts(models.Model):
 class Users(AbstractUser):  
     email = models.EmailField()
     sity = models.CharField(max_length=50)
-    resum = models.ForeignKey('Resume', on_delete=models.SET_NULL, null=True)
+    #resum = models.ForeignKey('Resume', on_delete=models.SET_NULL, null=True)
     photo = models.ImageField(upload_to='photo/%Y/%m/%d/', blank=True, verbose_name="Фото_Пользователя", null=True)
 
     def __str__(self):

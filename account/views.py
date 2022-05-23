@@ -2,7 +2,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.views import LoginView
 from django.shortcuts import render, redirect
-from django.views.generic.edit import CreateView, FormView, UpdateView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import ListView
 from django.urls import reverse_lazy
 from .forms import  Edit_Forms, LoginForm, UserRegistrationForm
@@ -33,11 +33,6 @@ from personal_portfolio.settings import *
 #     else:
 #         form = LoginForm()
 #     return render(request, 'login.html', {'form': form})
-
-
-# @login_required
-# def dashboard(request):
-#     return render(request, 'account/dashboard.html', {'section': 'dashboard'})
 
 
 class User_login(LoginView):

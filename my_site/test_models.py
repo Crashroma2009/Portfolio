@@ -4,7 +4,8 @@ from model_bakery import baker
 
 
 class TestModelsUsers(TestCase):
-    
+    """Тестирование модели User"""
+
     # @classmethod
     # def setUpTestData(cls):
     #     Users.objects.create(email='info2009@mail.com')

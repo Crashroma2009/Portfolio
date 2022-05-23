@@ -1,11 +1,13 @@
 from django.http import HttpResponse
 from django.core.exceptions import EmptyResultSet, ObjectDoesNotExist, ValidationError
 from django.shortcuts import render, redirect
+from rest_framework import generics
 from django.views.generic import ListView
-from .models import Resume
+from my_site.models import Resume
 from my_site.forms import *
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
+from my_site.serializer import *
 
 
 class IndexHome(ListView):
@@ -91,3 +93,18 @@ def search(request):
         print(e, 'Нет результатов')
     return render(request, 'search.html', context)
     
+
+#Here will be a view for the Portfolio app API
+class ResumeAPIList(generics.ListCreateAPIView):
+    queryset = Resume.objects.all()
+    serializer_class = ResumeSerializer
+
+
+class ResumeAPIUpdate(generics.UpdateAPIView):
+    queryset = Resume.objects.all()
+    serializer_class = ResumeSerializer
+
+
+class ResumeAPIDetailView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Resume.objects.all()
+    serializer_class = ResumeSerializer
