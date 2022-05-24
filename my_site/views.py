@@ -8,6 +8,7 @@ from my_site.forms import *
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
 from my_site.serializer import *
+from rest_framework.permissions import IsAuthenticated, IsAdminUser
 
 
 class IndexHome(ListView):
@@ -95,16 +96,20 @@ def search(request):
     
 
 #Here will be a view for the Portfolio app API
-class ResumeAPIList(generics.ListCreateAPIView):
+#Класс выдает список пользователей из БД
+class ResumeAPIList(generics.ListAPIView):
     queryset = Resume.objects.all()
     serializer_class = ResumeSerializer
 
 
-class ResumeAPIUpdate(generics.UpdateAPIView):
+#Класс обновляет запись в БД
+class ResumeAPIUpdate(generics.ListCreateAPIView):
     queryset = Resume.objects.all()
     serializer_class = ResumeSerializer
+    permission_classes = [IsAuthenticated]
 
-
+#Класс удаляет запись из БД
 class ResumeAPIDetailView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Resume.objects.all()
     serializer_class = ResumeSerializer
+    permission_classes = (IsAdminUser, )
